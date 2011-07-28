@@ -1,3 +1,6 @@
+<!-- Apigee WADL for the Pardot API -->
+<!-- Please see http://developer.pardot.com for more information -->
+ 
 <application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
   xmlns:apigee="http://api.apigee.com/wadl/2010/07/" 
@@ -28,7 +31,6 @@
 	    </doc>
       </method>
     </resource>
-
 
 	<!--               -->
 	<!-- OPPORTUNITIES --> 
@@ -70,7 +72,7 @@
         </apigee:tags>
         <apigee:authentication required="false" />
         <apigee:example url="/opportunity/version/3/do/create/prospect_id/{prospect_id}?user_key={user_key}&amp;api_key={api_key}&amp;name={name}&amp;value={value}&amp;probability={probability}" />
-	    <doc title="opportunity_create_byemail" apigee:url="http://developer.pardot.com/kb/api-version-3/using-opportunities">
+	    <doc title="opportunity_create_byid" apigee:url="http://developer.pardot.com/kb/api-version-3/using-opportunities">
 		  Creates a new opportunity using a prospect ID.
 	    </doc>
       </method>
@@ -89,7 +91,6 @@
 	    </doc>
       </method>
     </resource>
-
 
 	<!--           -->
 	<!-- PROSPECTS -->
@@ -354,7 +355,7 @@
         <apigee:authentication required="false" />
         <apigee:example url="/visitor/version/3/do/assign/email/{email}?user_key={user_key}&amp;api_key={api_key}&amp;user_email={user_email}" />
 	    <doc title="prospect_assign_byemail" apigee:url="http://developer.pardot.com/kb/api-version-3/using-visitors">
-		  Assigns or reassigns the visitor specified by ID to a specified Pardot user or group.
+		  Assigns or reassigns the visitor specified by email address to a specified Pardot user or group.
 	    </doc>
       </method>
     </resource>
@@ -367,8 +368,8 @@
         </apigee:tags>
         <apigee:authentication required="false" />
         <apigee:example url="/visitor/version/3/do/assign/id/{id}?user_key={user_key}&amp;api_key={api_key}&amp;user_email={user_email}" />
-	    <doc title="prospect_assign_byemail" apigee:url="http://developer.pardot.com/kb/api-version-3/using-visitors">
-		  Assigns or reassigns the visitor specified by email address to a specified Pardot user or group.
+	    <doc title="prospect_assign_byid" apigee:url="http://developer.pardot.com/kb/api-version-3/using-visitors">
+		  Assigns or reassigns the visitor specified by ID to a specified Pardot user or group.
 	    </doc>
       </method>
     </resource>
