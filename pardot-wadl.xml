@@ -85,7 +85,7 @@
           <apigee:tag primary="true">Opportunities</apigee:tag>
         </apigee:tags>
         <apigee:authentication required="false" />
-        <apigee:example url="/opportunity/version/3/do/read/{id}?user_key={user_key}&amp;api_key={api_key}" />
+        <apigee:example url="/opportunity/version/3/do/read/{id}?id={id}&amp;user_key={user_key}&amp;api_key={api_key}" />
 	    <doc title="opportunity_read" apigee:url="http://developer.pardot.com/kb/api-version-3/using-opportunities">
 		  Returns the data for the opportunity specified by ID.
 	    </doc>
@@ -201,7 +201,7 @@
           <apigee:tag primary="true">Prospects</apigee:tag>
         </apigee:tags>
         <apigee:authentication required="false" />
-        <apigee:example url="/prospect/version/3/do/read/email/{email}?user_key={user_key}&amp;api_key={api_key}" />
+        <apigee:example url="/prospect/version/3/do/update/email/{email}?user_key={user_key}&amp;api_key={api_key}" />
 	    <doc title="prospect_update_byemail" apigee:url="http://developer.pardot.com/kb/api-version-3/using-prospects">
 		  Updates the provided data for a prospect specified by email address.
 	    </doc>
