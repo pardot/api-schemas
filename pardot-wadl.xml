@@ -11,6 +11,7 @@
   <resources base="https://pi.pardot.com/api/">
 
 	<!-- Authentication -->
+	<!-- Use this method to acquire an API key, which expires after 60 minutes. Your API and User keys need to be included as parameters in each API request. More information can be found at http://developer.pardot.com/kb/api-version-3/authentication -->
     <resource path="login/version/3">
       <method id="login" name="POST" apigee:displayName="Login">
 
@@ -342,20 +343,6 @@
         <apigee:example url="/visitor/version/3/do/read/id/{id}?user_key={user_key}&amp;api_key={api_key}" />
 	    <doc title="visitor_read" apigee:url="http://developer.pardot.com/kb/api-version-3/using-visitors">
 		  Returns the data for the visitor specified by ID.
-	    </doc>
-      </method>
-    </resource>
-
-	<!-- Assign a Visitor specified by email address -->
-    <resource path="visitor/version/3/do/assign">
-      <method id="visitor_assign_byemail" name="POST" apigee:displayName="Assign by Email">
-        <apigee:tags>
-          <apigee:tag primary="true">Visitors</apigee:tag>
-        </apigee:tags>
-        <apigee:authentication required="false" />
-        <apigee:example url="/visitor/version/3/do/assign/email/{email}?user_key={user_key}&amp;api_key={api_key}&amp;user_email={user_email}" />
-	    <doc title="prospect_assign_byemail" apigee:url="http://developer.pardot.com/kb/api-version-3/using-visitors">
-		  Assigns or reassigns the visitor specified by email address to a specified Pardot user or group.
 	    </doc>
       </method>
     </resource>
