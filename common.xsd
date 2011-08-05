@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:com="common" targetNamespace="common" elementFormDefault="qualified">    
+      
+    <xsd:complexType name="baseResponse"/>          
+      
+    <xsd:complexType name="opportunityType">
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:int" minOccurs="1"/>
+            <xsd:element name="campaign_id" type="xsd:int" minOccurs="1"/>
+            <xsd:element name="name" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="value" type="xsd:int" minOccurs="1"/>
+            <xsd:element name="probability" type="xsd:int" minOccurs="1"/>
+            <xsd:element name="type" type="xsd:string"/>
+            <xsd:element name="stage" type="xsd:string"/>
+            <xsd:element name="status" type="xsd:int"/>
+            <xsd:element name="created_at" type="xsd:dateTime"/>
+            <xsd:element name="updated_at" type="xsd:dateTime"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="opportunityListType">
+        <xsd:sequence>
+            <xsd:element name="opportunityInstance" type="com:opportunityType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="campaignType">
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:int" minOccurs="1"/>            
+            <xsd:element name="name" type="xsd:string" minOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="campaignListType">
+        <xsd:sequence>
+            <xsd:element name="campaignInstance" type="com:campaignType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="prospectType">
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:int" minOccurs="1"/>
+            <xsd:element name="campaign_id" type="xsd:int"/>
+            <xsd:element name="salutation" type="xsd:string"/>
+            <xsd:element name="first_name" type="xsd:string"/>
+            <xsd:element name="last_name" type="xsd:string"/>
+            <xsd:element name="email" type="xsd:string" minOccurs="1"/>            
+            <xsd:element name="password" type="xsd:string"/>
+            <xsd:element name="company" type="xsd:string"/>
+            <xsd:element name="website" type="xsd:string"/>
+            <xsd:element name="job_title" type="xsd:string"/>
+            <xsd:element name="department" type="xsd:string"/>
+            <xsd:element name="country" type="xsd:string"/>
+            <xsd:element name="address_one" type="xsd:string"/>
+            <xsd:element name="address_two" type="xsd:string"/>
+            <xsd:element name="city" type="xsd:string"/>
+            <xsd:element name="state" type="xsd:string"/>
+            <xsd:element name="zip" type="xsd:string"/>
+            <xsd:element name="phone" type="xsd:string"/>
+            <xsd:element name="fax" type="xsd:string"/>
+            <xsd:element name="source" type="xsd:string"/>
+            <xsd:element name="annual_revenue" type="xsd:string"/>
+            <xsd:element name="employees" type="xsd:string"/>
+            <xsd:element name="industry" type="xsd:string"/>
+            <xsd:element name="years_in_business" type="xsd:string"/>
+            <xsd:element name="comments" type="xsd:string"/>
+            <xsd:element name="notes" type="xsd:string"/>
+            <xsd:element name="score" type="xsd:string"/>
+            <xsd:element name="grade" type="xsd:string"/>
+            <xsd:element name="last_activity_at" type="xsd:dateTime"/>
+            <xsd:element name="recent_interaction" type="xsd:string"/>
+            <xsd:element name="commentscrm_lead_fid" type="xsd:int"/>
+            <xsd:element name="commentscrm_contact_fid" type="xsd:int"/>
+            <xsd:element name="commentscrm_owner_fid" type="xsd:int"/>
+            <xsd:element name="commentscrm_account_fid" type="xsd:int"/>
+            <xsd:element name="commentscrm_opportunity_fid" type="xsd:int"/>
+            <xsd:element name="commentscrm_opportunity_created_at" type="xsd:int"/>
+            <xsd:element name="commentscrm_opportunity_status" type="xsd:string"/>
+            <xsd:element name="commentscrm_last_sync" type="xsd:dateTime"/>
+            <xsd:element name="crm_is_sale_won" type="xsd:int"/>
+            <xsd:element name="crm_url" type="xsd:string"/>
+            <xsd:element name="is_do_not_email" type="xsd:int"/>
+            <xsd:element name="opted_out" type="xsd:int"/>
+            <xsd:element name="is_reviewed" type="xsd:int"/>
+            <xsd:element name="is_starred" type="xsd:int"/>
+            <xsd:element name="created_at" type="xsd:dateTime"/>
+            <xsd:element name="updated_at" type="xsd:dateTime"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="prospectListType">
+        <xsd:sequence>
+            <xsd:element name="prospectInstance" type="com:prospectType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+        
+    <xsd:complexType name="userType">
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:int" minOccurs="1"/>
+            <xsd:element name="email" type="xsd:string"/>
+            <xsd:element name="first_name" type="xsd:string"/>
+            <xsd:element name="last_name" type="xsd:string"/>
+            <xsd:element name="job_title" type="xsd:string"/>
+            <xsd:element name="role" type="xsd:string"/>
+            <xsd:element name="created_at" type="xsd:dateTime"/>
+            <xsd:element name="updated_at" type="xsd:dateTime"/>
+        </xsd:sequence>
+    </xsd:complexType>        
+
+    <xsd:complexType name="visitType">
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:int" minOccurs="1"/>
+            <xsd:element name="visitor_id" type="xsd:int"/>
+            <xsd:element name="prospect_id" type="xsd:int"/>
+            <xsd:element name="visitor_page_view_count"/>
+            <xsd:element name="first_visitor_page_view_at" type="xsd:dateTime"/>
+            <xsd:element name="last_visitor_page_view_at" type="xsd:dateTime"/>
+            <xsd:element name="duration_in_seconds" type="xsd:int"/>
+            <xsd:element name="campaign_parameter" type="xsd:string"/>
+            <xsd:element name="medium_parameter" type="xsd:string"/>
+            <xsd:element name="source_parameter" type="xsd:string"/>
+            <xsd:element name="content_parameter" type="xsd:string"/>
+            <xsd:element name="term_parameter" type="xsd:string"/>
+            <xsd:element name="created_at" type="xsd:dateTime"/>
+            <xsd:element name="updated_at" type="xsd:dateTime"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="visitorType">
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:int" minOccurs="1"/>
+            <xsd:element name="browser" type="xsd:string"/>
+            <xsd:element name="browser_version" type="xsd:string"/>
+            <xsd:element name="operating_system" type="xsd:string"/>
+            <xsd:element name="operating_system_version" type="xsd:string"/>
+            <xsd:element name="language" type="xsd:string"/>
+            <xsd:element name="screen_height" type="xsd:int"/>
+            <xsd:element name="screen_width" type="xsd:int"/>
+            <xsd:element name="page_view_count" type="xsd:int"/>
+            <xsd:element name="is_flash_enabled" type="xsd:int"/>
+            <xsd:element name="is_java_enabled" type="xsd:int"/>
+            <xsd:element name="ip_address" type="xsd:string"/>
+            <xsd:element name="hostname" type="xsd:string"/>            
+            <xsd:element name="campaign_parameter" type="xsd:string"/>
+            <xsd:element name="medium_parameter" type="xsd:string"/>
+            <xsd:element name="source_parameter" type="xsd:string"/>
+            <xsd:element name="content_parameter" type="xsd:string"/>
+            <xsd:element name="term_parameter" type="xsd:string"/>
+            <xsd:element name="created_at" type="xsd:dateTime"/>
+            <xsd:element name="updated_at" type="xsd:dateTime"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="visitorActivityType">
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:int" minOccurs="1"/>            
+            <xsd:element name="prospect_id" type="xsd:int"/>
+            <xsd:element name="visitor_id" type="xsd:int"/>
+            <xsd:element name="type" type="xsd:int"/>
+            <xsd:element name="type_name" type="xsd:string"/>
+            <xsd:element name="details" type="xsd:string"/>
+            <xsd:element name="email_id" type="xsd:int"/>
+            <xsd:element name="form_id" type="xsd:int"/>
+            <xsd:element name="form_handler_id" type="xsd:int"/>
+            <xsd:element name="site_search_query_id" type="xsd:int"/>
+            <xsd:element name="landing_page_id" type="xsd:int"/>
+            <xsd:element name="paid_search_id" type="xsd:int"/>
+            <xsd:element name="multivariate_test_variation_id" type="xsd:int"/>
+            <xsd:element name="visitor_page_view_id" type="xsd:int"/>
+            <xsd:element name="file_id" type="xsd:int"/>
+            <xsd:element name="updated_at" type="xsd:dateTime"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="visitorActivityListType">
+        <xsd:sequence>
+            <xsd:element name="visitorActivityInstance" type="com:visitorActivityType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+</xsd:schema>

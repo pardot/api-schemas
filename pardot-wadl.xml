@@ -20,8 +20,8 @@
           <apigee:tag primary="true">Authentication</apigee:tag>
         </apigee:tags>
 
-       <!-- Is authentication required for this method? -->
-       <apigee:authentication required="false" />
+        <!-- Is authentication required for this method? -->
+        <apigee:authentication required="false" />
 
         <!-- Example element is used to specify the sample URL to display in the Console's request URL field. -->
         <apigee:example url="/login/version/3?email={email}&amp;password={password}&amp;user_key={user_key}" />
@@ -30,7 +30,8 @@
 	    <doc title="login" apigee:url="http://developer.pardot.com/kb/api-version-3/authentication">
 		  Authenticate a connection to the API. 
 	    </doc>
-      </method>
+
+  	  </method>
     </resource>
 
 	<!--               -->
