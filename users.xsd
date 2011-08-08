@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pros="prospects" xmlns:com="common" targetNamespace="prospects">
+
+    <xsd:import namespace="common" schemaLocation="common.xsd"/>
+
+    <!-- Response format from users 'query' -->    
+    <xsd:complexType name="usersQueryResponse">
+        <xsd:complexContent>
+            <xsd:extension base="com:baseResponse">
+                <xsd:sequence>
+                    <xsd:element name="totalResults" type="xsd:int"/>
+                    <xsd:element name="prospectList" type="com:userListType"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>       
+    
+    <!-- Response format from users 'read' -->
+    <xsd:complexType name="usersReadResponse">
+        <xsd:complexContent>
+            <xsd:extension base="com:baseResponse">
+                <xsd:sequence>
+                    <xsd:element name="user" type="com:userType"/>                    
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+</xsd:schema>
