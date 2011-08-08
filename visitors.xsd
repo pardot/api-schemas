@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:vis="visitors" xmlns:com="common" targetNamespace="visitors">
+
+    <xsd:import namespace="common" schemaLocation="common.xsd"/>
+
+    <!-- Response format from visitors 'query' -->    
+    <xsd:complexType name="visitorsQueryResponse">
+        <xsd:complexContent>
+            <xsd:extension base="com:baseResponse">
+                <xsd:sequence>
+                    <xsd:element name="totalResults" type="xsd:int"/>
+                    <xsd:element name="visitorList" type="com:visitorListType"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>       
+    
+    <!-- Response format from prospects 'assign', 'read' -->
+    <xsd:complexType name="visitorsUseResponse">
+        <xsd:complexContent>        
+            <xsd:extension base="com:baseResponse">
+                <xsd:sequence>
+                    <xsd:element name="visitor">
+                        <xsd:complexType>
+                            <xsd:complexContent>
+                                <xsd:extension base="com:visitorType">
+                                    <xsd:sequence>
+                                        <xsd:element name="prospect" type="com:prospectType"/>
+                                        <xsd:element name="identified_company" type="com:identifiedCompanyType"/>
+                                        <xsd:element name="visitor_referrer" type="com:visitorReferrerType"/>
+                                        <xsd:element name="visitor_activities">
+                                            <xsd:complexType>
+                                                <xsd:complexContent>
+                                                    <xsd:extension base="com:visitorActivityListType">
+                                                        <xsd:sequence>
+                                                            <xsd:element name="visitor_activity" type="com:visitorActivityType"/>
+                                                        </xsd:sequence>
+                                                    </xsd:extension>
+                                                </xsd:complexContent>
+                                            </xsd:complexType>
+                                        </xsd:element>
+                                    </xsd:sequence>
+                                </xsd:extension>
+                            </xsd:complexContent>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:sequence>            
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="visitorAssignResponse">
+        <xsd:complexContent>
+            <xsd:extension base="vis:visitorsUseResponse"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+        
+    <xsd:complexType name="visitorReadResponse">
+        <xsd:complexContent>
+            <xsd:extension base="vis:visitorsUseResponse"/>
+        </xsd:complexContent>
+    </xsd:complexType>    
+    
+</xsd:schema>
