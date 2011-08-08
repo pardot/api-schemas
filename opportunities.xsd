@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:com="common"
-    targetNamespace="opportunities">
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:opp="opportunities" xmlns:com="common" targetNamespace="opportunities">
 
     <xsd:import namespace="common" schemaLocation="common.xsd"/>
 
@@ -16,39 +15,57 @@
         </xsd:complexContent>
     </xsd:complexType>
 
-    <!-- Response format from opportunity 'create', 'read', 'update' -->
+    <!-- Response format from opportunities 'create', 'read', 'update' -->
     <xsd:complexType name="opportunitiesUseResponse">
+        <xsd:complexContent>        
+           <xsd:extension base="com:baseResponse">
+               <xsd:sequence>
+                   <xsd:element name="opportunity" type="com:opportunityType"/>
+                   <xsd:element name="campaign" type="com:campaignType"/>
+                   <xsd:element name="prospects">
+                       <xsd:complexType>
+                           <xsd:complexContent>
+                               <xsd:extension base="com:prospectListType">
+                                   <xsd:sequence>
+                                       <xsd:element name="prospect" type="com:prospectType"/>
+                                   </xsd:sequence>
+                               </xsd:extension>
+                           </xsd:complexContent>
+                       </xsd:complexType>
+                   </xsd:element>
+                   <xsd:element name="opportunity_activities">
+                       <xsd:complexType>
+                           <xsd:complexContent>
+                               <xsd:extension base="com:visitorActivityListType">
+                                   <xsd:sequence>
+                                       <xsd:element name="visitor_activity"
+                                           type="com:visitorActivityType"/>
+                                   </xsd:sequence>
+                               </xsd:extension>
+                           </xsd:complexContent>
+                       </xsd:complexType>
+                   </xsd:element>
+               </xsd:sequence>            
+           </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+        
+    <xsd:complexType name="opportunitiesCreateResponse">
         <xsd:complexContent>
-            <xsd:extension base="com:baseResponse">
-                <xsd:sequence>
-                    <xsd:element name="opportunity" type="com:opportunityType"/>
-                    <xsd:element name="campaign" type="com:campaignType"/>
-                    <xsd:element name="prospects">
-                        <xsd:complexType>
-                            <xsd:complexContent>
-                                <xsd:extension base="com:prospectListType">
-                                    <xsd:sequence>
-                                        <xsd:element name="prospect" type="com:prospectType"/>
-                                    </xsd:sequence>
-                                </xsd:extension>
-                            </xsd:complexContent>
-                        </xsd:complexType>
-                    </xsd:element>
-                    <xsd:element name="opportunity_activities">
-                        <xsd:complexType>
-                            <xsd:complexContent>
-                                <xsd:extension base="com:visitorActivityListType">
-                                    <xsd:sequence>
-                                        <xsd:element name="visitor_activity"
-                                            type="com:visitorActivityType"/>
-                                    </xsd:sequence>
-                                </xsd:extension>
-                            </xsd:complexContent>
-                        </xsd:complexType>
-                    </xsd:element>
-                </xsd:sequence>
-            </xsd:extension>
+            <xsd:extension base="opp:opportunitiesUseResponse"/>
         </xsd:complexContent>
     </xsd:complexType>
 
+    <xsd:complexType name="opportunitiesReadResponse">
+        <xsd:complexContent>
+            <xsd:extension base="opp:opportunitiesUseResponse"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="opportunitiesUpdateResponse">
+        <xsd:complexContent>
+            <xsd:extension base="opp:opportunitiesUseResponse"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
 </xsd:schema>
