@@ -3,6 +3,29 @@
       
     <xsd:complexType name="baseResponse"/>          
       
+    <xsd:complexType name="emailListType">
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:int" minOccurs="1"/>
+            <xsd:element name="name" type="xsd:string"/>
+            <xsd:element name="title" type="xsd:string"/>
+            <xsd:element name="description" type="xsd:int"/>
+            <xsd:element name="created_at" type="xsd:dateTime"/>
+            <xsd:element name="updated_at" type="xsd:dateTime"/>
+        </xsd:sequence>
+    </xsd:complexType>      
+      
+    <xsd:complexType name="emailListSubscriptionType">
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:int" minOccurs="1"/>
+            <xsd:element name="list_id" type="xsd:int" minOccurs="1"/>
+            <xsd:element name="prospect_id" type="xsd:int" minOccurs="1"/>
+            <xsd:element name="did_opt_in" type="xsd:int"/>
+            <xsd:element name="did_opt_out" type="xsd:int"/>
+            <xsd:element name="created_at" type="xsd:dateTime"/>
+            <xsd:element name="updated_at" type="xsd:dateTime"/>
+        </xsd:sequence>
+    </xsd:complexType>
+      
     <xsd:complexType name="opportunityType">
         <xsd:sequence>
             <xsd:element name="id" type="xsd:int" minOccurs="1"/>
@@ -21,6 +44,19 @@
     <xsd:complexType name="opportunityListType">
         <xsd:sequence>
             <xsd:element name="opportunityInstance" type="com:opportunityType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="identifiedCompanyType">
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:int" minOccurs="1"/>            
+            <xsd:element name="name" type="xsd:string"/>
+            <xsd:element name="street_address" type="xsd:string"/>
+            <xsd:element name="city" type="xsd:string"/>
+            <xsd:element name="state" type="xsd:string"/>
+            <xsd:element name="postal_code" type="xsd:string"/>
+            <xsd:element name="country" type="xsd:string"/>
+            <xsd:element name="email" type="xsd:string"/>
         </xsd:sequence>
     </xsd:complexType>
     
@@ -126,6 +162,21 @@
         </xsd:sequence>
     </xsd:complexType>
     
+    <xsd:complexType name="profileType">
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:int" minOccurs="1"/>
+            <xsd:element name="name" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="profileCriteriaType">
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:int" minOccurs="1"/>
+            <xsd:element name="name" type="xsd:string"/>
+            <xsd:element name="matches" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
     <xsd:complexType name="visitorType">
         <xsd:sequence>
             <xsd:element name="id" type="xsd:int" minOccurs="1"/>
@@ -148,6 +199,22 @@
             <xsd:element name="term_parameter" type="xsd:string"/>
             <xsd:element name="created_at" type="xsd:dateTime"/>
             <xsd:element name="updated_at" type="xsd:dateTime"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="visitorListType">
+        <xsd:sequence>
+            <xsd:element name="visitorInstance" type="com:visitorType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="visitorReferrerType">
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:int" minOccurs="1"/>
+            <xsd:element name="referrer" type="xsd:string"/>
+            <xsd:element name="vendor" type="xsd:string"/>
+            <xsd:element name="type" type="xsd:string"/>
+            <xsd:element name="query" type="xsd:string"/>
         </xsd:sequence>
     </xsd:complexType>
     

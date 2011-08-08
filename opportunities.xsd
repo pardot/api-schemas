@@ -18,35 +18,43 @@
     <!-- Response format from opportunities 'create', 'read', 'update' -->
     <xsd:complexType name="opportunitiesUseResponse">
         <xsd:complexContent>        
-           <xsd:extension base="com:baseResponse">
-               <xsd:sequence>
-                   <xsd:element name="opportunity" type="com:opportunityType"/>
-                   <xsd:element name="campaign" type="com:campaignType"/>
-                   <xsd:element name="prospects">
-                       <xsd:complexType>
-                           <xsd:complexContent>
-                               <xsd:extension base="com:prospectListType">
-                                   <xsd:sequence>
-                                       <xsd:element name="prospect" type="com:prospectType"/>
-                                   </xsd:sequence>
-                               </xsd:extension>
-                           </xsd:complexContent>
-                       </xsd:complexType>
-                   </xsd:element>
-                   <xsd:element name="opportunity_activities">
-                       <xsd:complexType>
-                           <xsd:complexContent>
-                               <xsd:extension base="com:visitorActivityListType">
-                                   <xsd:sequence>
-                                       <xsd:element name="visitor_activity"
-                                           type="com:visitorActivityType"/>
-                                   </xsd:sequence>
-                               </xsd:extension>
-                           </xsd:complexContent>
-                       </xsd:complexType>
-                   </xsd:element>
-               </xsd:sequence>            
-           </xsd:extension>
+            <xsd:extension base="com:baseResponse">
+                <xsd:sequence>
+                    <xsd:element name="opportunity">
+                        <xsd:complexType>
+                            <xsd:complexContent>
+                                <xsd:extension base="com:opportunityType">
+                                    <xsd:sequence>
+                                        <xsd:element name="campaign" type="com:campaignType"/>
+                                        <xsd:element name="prospects">
+                                            <xsd:complexType>
+                                                <xsd:complexContent>
+                                                    <xsd:extension base="com:prospectListType">
+                                                        <xsd:sequence>
+                                                            <xsd:element name="prospect" type="com:prospectType"/>
+                                                        </xsd:sequence>
+                                                    </xsd:extension>
+                                                </xsd:complexContent>
+                                            </xsd:complexType>
+                                        </xsd:element>
+                                        <xsd:element name="opportunity_activities">
+                                            <xsd:complexType>
+                                                <xsd:complexContent>
+                                                    <xsd:extension base="com:visitorActivityListType">
+                                                        <xsd:sequence>
+                                                            <xsd:element name="visitor_activity" type="com:visitorActivityType"/>
+                                                        </xsd:sequence>
+                                                    </xsd:extension>
+                                                </xsd:complexContent>
+                                            </xsd:complexType>
+                                        </xsd:element>
+                                    </xsd:sequence>
+                                </xsd:extension>
+                            </xsd:complexContent>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:sequence>            
+            </xsd:extension>
         </xsd:complexContent>
     </xsd:complexType>
         
