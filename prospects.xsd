@@ -1,126 +1,354 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pros="prospects" xmlns:com="common" targetNamespace="prospects">
-
-    <xsd:import namespace="common" schemaLocation="common.xsd"/>
-
-    <!-- Response format from opportunity 'query' -->    
-    <xsd:complexType name="prospectsQueryResponse">
-        <xsd:complexContent>
-            <xsd:extension base="com:rsp">
-                <xsd:sequence>
-                    <xsd:element name="totalResults" type="xsd:int"/>
-                    <xsd:element name="prospectList" type="com:prospectListType"/>
-                </xsd:sequence>
-            </xsd:extension>
-        </xsd:complexContent>
-    </xsd:complexType>       
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
     
-    <!-- Response format from prospects 'assign', 'create', 'read', 'update', 'upsert' -->
-    <xsd:complexType name="prospectsUseResponse">
-        <xsd:complexContent>        
-            <xsd:extension base="com:rsp">
-                <xsd:sequence>
-                    <xsd:element name="prospect">
-                        <xsd:complexType>
-                            <xsd:complexContent>
-                                <xsd:extension base="com:prospectType">
-                                    <xsd:sequence>
-                                        <xsd:element name="campaign" type="com:campaignType"/>
-                                        <xsd:element name="assigned_to" type="com:userType"/>
-                                        <xsd:element name="last_activity" type="com:visitorActivityType"/>
-                                        <xsd:element name="profile">
-                                            <xsd:complexType>
-                                                <xsd:complexContent>
-                                                   <xsd:extension base="com:profileType">
-                                                       <xsd:sequence>
-                                                           <xsd:element name="profile_criteria" type="com:profileCriteriaType"/>
-                                                       </xsd:sequence>
-                                                   </xsd:extension>
-                                                </xsd:complexContent>
-                                            </xsd:complexType>
-                                        </xsd:element>
-                                        <xsd:element name="visitors">
-                                            <xsd:complexType>
-                                                <xsd:complexContent>
-                                                    <xsd:extension base="com:visitorListType">
-                                                        <xsd:sequence>
-                                                            <xsd:element name="visitor" type="com:visitorType"/>
-                                                            <xsd:element name="visitor_referrer" type="com:visitorReferrerType"/>
-                                                        </xsd:sequence>                                                        
-                                                    </xsd:extension>
-                                                </xsd:complexContent>
-                                            </xsd:complexType>                                        
-                                        </xsd:element>
-                                        <xsd:element name="visitor_activities">
-                                            <xsd:complexType>
-                                                <xsd:complexContent>
-                                                    <xsd:extension base="com:visitorActivityListType">
-                                                        <xsd:sequence>
-                                                            <xsd:element name="visitor_activity" type="com:visitorActivityType"/>
-                                                        </xsd:sequence>
-                                                    </xsd:extension>
-                                                </xsd:complexContent>
-                                            </xsd:complexType>
-                                        </xsd:element>
-                                        <xsd:element name="lists">
-                                            <xsd:complexType>
-                                                <xsd:complexContent>
-                                                    <xsd:extension base="com:emailListType">
-                                                        <xsd:sequence>
-                                                            <xsd:element name="list_subscription">
-                                                                <xsd:complexType>
-                                                                    <xsd:complexContent>
-                                                                        <xsd:extension base="com:emailListSubscriptionType">
-                                                                            <xsd:sequence>
-                                                                                <xsd:element name="list" type="com:emailListType"/>
-                                                                            </xsd:sequence>
-                                                                        </xsd:extension>
-                                                                    </xsd:complexContent>
-                                                                </xsd:complexType>
-                                                            </xsd:element>
-                                                        </xsd:sequence>
-                                                    </xsd:extension>
-                                                </xsd:complexContent>
-                                            </xsd:complexType>
-                                        </xsd:element>
-                                    </xsd:sequence>
-                                </xsd:extension>
-                            </xsd:complexContent>
-                        </xsd:complexType>
-                    </xsd:element>
-                </xsd:sequence>            
-            </xsd:extension>
-        </xsd:complexContent>
-    </xsd:complexType>
+    <!-- prospect query -->
+    <xs:element name="rsp">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="result"/>
+            </xs:sequence>
+            <xs:attribute name="stat" use="required" type="xs:NCName"/>
+            <xs:attribute name="version" use="required" type="xs:decimal"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="result">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="total_results"/>
+                <xs:element maxOccurs="unbounded" ref="prospect"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="total_results" type="xs:integer"/>
+    <xs:element name="prospect">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"/>
+                <xs:element ref="campaign_id"/>
+                <xs:element ref="salutation"/>
+                <xs:element ref="first_name"/>
+                <xs:element ref="last_name"/>
+                <xs:element ref="email"/>
+                <xs:element ref="password"/>
+                <xs:element ref="company"/>
+                <xs:element ref="website"/>
+                <xs:element ref="job_title"/>
+                <xs:element ref="department"/>
+                <xs:element ref="country"/>
+                <xs:element ref="address_one"/>
+                <xs:element ref="address_two"/>
+                <xs:element ref="city"/>
+                <xs:element ref="state"/>
+                <xs:element ref="territory"/>
+                <xs:element ref="zip"/>
+                <xs:element ref="phone"/>
+                <xs:element ref="fax"/>
+                <xs:element ref="source"/>
+                <xs:element ref="annual_revenue"/>
+                <xs:element ref="employees"/>
+                <xs:element ref="industry"/>
+                <xs:element ref="years_in_business"/>
+                <xs:element ref="comments"/>
+                <xs:element ref="notes"/>
+                <xs:element ref="score"/>
+                <xs:element ref="grade"/>
+                <xs:element ref="last_activity_at"/>
+                <xs:element ref="recent_interaction"/>
+                <xs:element ref="crm_lead_fid"/>
+                <xs:element ref="crm_contact_fid"/>
+                <xs:element ref="crm_owner_fid"/>
+                <xs:element ref="crm_account_fid"/>
+                <xs:element ref="crm_opportunity_fid"/>
+                <xs:element ref="crm_opportunity_created_at"/>
+                <xs:element ref="crm_opportunity_updated_at"/>
+                <xs:element ref="crm_opportunity_value"/>
+                <xs:element ref="crm_opportunity_status"/>
+                <xs:element ref="crm_last_sync"/>
+                <xs:element ref="crm_is_sale_won"/>
+                <xs:element ref="is_do_not_email"/>
+                <xs:element ref="is_do_not_call"/>
+                <xs:element ref="opted_out"/>
+                <xs:element ref="short_code"/>
+                <xs:element ref="is_reviewed"/>
+                <xs:element ref="is_starred"/>
+                <xs:element ref="created_at"/>
+                <xs:element ref="updated_at"/>
+                <xs:element ref="campaign"/>
+                <xs:element minOccurs="0" ref="assigned_to"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="campaign_id" type="xs:integer"/>
+    <xs:element name="salutation">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="password">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="company" type="xs:string"/>
+    <xs:element name="website" type="xs:anyURI"/>
+    <xs:element name="department">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="country">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="address_one">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="address_two">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="city">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="state">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="territory">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="zip">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="phone">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="fax">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="source">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="annual_revenue">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="employees">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="industry">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="years_in_business">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="comments">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="notes">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="score" type="xs:integer"/>
+    <xs:element name="grade">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="last_activity_at">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="recent_interaction" type="xs:string"/>
+    <xs:element name="crm_lead_fid">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="crm_contact_fid">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="crm_owner_fid">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="crm_account_fid">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="crm_opportunity_fid">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="crm_opportunity_created_at">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="crm_opportunity_updated_at">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="crm_opportunity_value">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="crm_opportunity_status">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="crm_last_sync">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="crm_is_sale_won">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="is_do_not_email">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="is_do_not_call">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="opted_out">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="short_code" type="xs:NMTOKEN"/>
+    <xs:element name="is_reviewed" type="xs:string"/>
+    <xs:element name="is_starred">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="campaign">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"/>
+                <xs:element ref="name"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="name" type="xs:NCName"/>
+    <xs:element name="assigned_to">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="user"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="user">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"/>
+                <xs:element ref="email"/>
+                <xs:element ref="first_name"/>
+                <xs:element ref="last_name"/>
+                <xs:element ref="job_title"/>
+                <xs:element ref="role"/>
+                <xs:element ref="created_at"/>
+                <xs:element ref="updated_at"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="role" type="xs:NCName"/>
+    <xs:element name="id" type="xs:integer"/>
+    <xs:element name="first_name" type="xs:string"/>
+    <xs:element name="last_name" type="xs:string"/>
+    <xs:element name="email" type="xs:string"/>
+    <xs:element name="job_title">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="created_at" type="xs:string"/>
+    <xs:element name="updated_at" type="xs:string"/>
     
-    <xsd:complexType name="prospectsAssignResponse">
-        <xsd:complexContent>
-            <xsd:extension base="pros:prospectsUseResponse"/>
-        </xsd:complexContent>
-    </xsd:complexType>
-    
-    <xsd:complexType name="prospectsCreateResponse">
-        <xsd:complexContent>
-            <xsd:extension base="pros:prospectsUseResponse"/>
-        </xsd:complexContent>
-    </xsd:complexType>
-    
-    <xsd:complexType name="prospectsReadResponse">
-        <xsd:complexContent>
-            <xsd:extension base="pros:prospectsUseResponse"/>
-        </xsd:complexContent>
-    </xsd:complexType>
-    
-    <xsd:complexType name="prospectsUpdateResponse">
-        <xsd:complexContent>
-            <xsd:extension base="pros:prospectsUseResponse"/>
-        </xsd:complexContent>
-    </xsd:complexType>
-    
-    <xsd:complexType name="prospectsUpsertResponse">
-        <xsd:complexContent>
-            <xsd:extension base="pros:prospectsUseResponse"/>
-        </xsd:complexContent>
-    </xsd:complexType>    
-    
-</xsd:schema>
+    <!-- prospect read -->
+    <xs:element name="rsp2">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="prospect"/>
+            </xs:sequence>
+            <xs:attribute name="stat" use="required" type="xs:NCName"/>
+            <xs:attribute name="version" use="required" type="xs:decimal"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="prospect2">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"/>
+                <xs:element ref="campaign_id"/>
+                <xs:element ref="salutation"/>
+                <xs:element ref="first_name"/>
+                <xs:element ref="last_name"/>
+                <xs:element ref="email"/>
+                <xs:element ref="password"/>
+                <xs:element ref="company"/>
+                <xs:element ref="website"/>
+                <xs:element ref="job_title"/>
+                <xs:element ref="department"/>
+                <xs:element ref="country"/>
+                <xs:element ref="address_one"/>
+                <xs:element ref="address_two"/>
+                <xs:element ref="city"/>
+                <xs:element ref="state"/>
+                <xs:element ref="territory"/>
+                <xs:element ref="zip"/>
+                <xs:element ref="phone"/>
+                <xs:element ref="fax"/>
+                <xs:element ref="source"/>
+                <xs:element ref="annual_revenue"/>
+                <xs:element ref="employees"/>
+                <xs:element ref="industry"/>
+                <xs:element ref="years_in_business"/>
+                <xs:element ref="comments"/>
+                <xs:element ref="notes"/>
+                <xs:element ref="score"/>
+                <xs:element ref="grade"/>
+                <xs:element ref="last_activity_at"/>
+                <xs:element ref="recent_interaction"/>
+                <xs:element ref="crm_lead_fid"/>
+                <xs:element ref="crm_contact_fid"/>
+                <xs:element ref="crm_owner_fid"/>
+                <xs:element ref="crm_account_fid"/>
+                <xs:element ref="crm_opportunity_fid"/>
+                <xs:element ref="crm_opportunity_created_at"/>
+                <xs:element ref="crm_opportunity_updated_at"/>
+                <xs:element ref="crm_opportunity_value"/>
+                <xs:element ref="crm_opportunity_status"/>
+                <xs:element ref="crm_last_sync"/>
+                <xs:element ref="crm_is_sale_won"/>
+                <xs:element ref="is_do_not_email"/>
+                <xs:element ref="is_do_not_call"/>
+                <xs:element ref="opted_out"/>
+                <xs:element ref="short_code"/>
+                <xs:element ref="is_reviewed"/>
+                <xs:element ref="is_starred"/>
+                <xs:element ref="created_at"/>
+                <xs:element ref="updated_at"/>
+                <xs:element ref="campaign"/>
+                <xs:element ref="assigned_to"/>
+                <xs:element ref="profile"/>
+                <xs:element ref="visitors"/>
+                <xs:element ref="visitor_activities"/>
+                <xs:element ref="lists"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="profile">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"/>
+                <xs:element ref="name"/>
+                <xs:element maxOccurs="unbounded" ref="profile_criteria"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="profile_criteria">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"/>
+                <xs:element ref="name"/>
+                <xs:element ref="matches"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="matches" type="xs:NCName"/>
+    <xs:element name="visitors">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="visitor_activities">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="visitor_activity"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="visitor_activity">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"/>
+                <xs:element ref="type"/>
+                <xs:element ref="type_name"/>
+                <xs:element minOccurs="0" ref="campaign"/>
+                <xs:element ref="created_at"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="type" type="xs:integer"/>
+    <xs:element name="type_name" type="xs:string"/>
+    <xs:element name="lists">
+        <xs:complexType/>
+    </xs:element>
+</xs:schema>
