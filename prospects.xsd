@@ -6,7 +6,7 @@
     <!-- Response format from opportunity 'query' -->    
     <xsd:complexType name="prospectsQueryResponse">
         <xsd:complexContent>
-            <xsd:extension base="com:baseResponse">
+            <xsd:extension base="com:rsp">
                 <xsd:sequence>
                     <xsd:element name="totalResults" type="xsd:int"/>
                     <xsd:element name="prospectList" type="com:prospectListType"/>
@@ -18,7 +18,7 @@
     <!-- Response format from prospects 'assign', 'create', 'read', 'update', 'upsert' -->
     <xsd:complexType name="prospectsUseResponse">
         <xsd:complexContent>        
-            <xsd:extension base="com:baseResponse">
+            <xsd:extension base="com:rsp">
                 <xsd:sequence>
                     <xsd:element name="prospect">
                         <xsd:complexType>

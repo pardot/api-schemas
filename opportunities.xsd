@@ -6,9 +6,8 @@
     <!-- Response format from opportunity 'query' -->
     <xsd:complexType name="opportunitiesQueryResponse">
         <xsd:complexContent>
-            <xsd:extension base="com:baseResponse">
+            <xsd:extension base="com:result">
                 <xsd:sequence>
-                    <xsd:element name="totalResults" type="xsd:int"/>
                     <xsd:element name="opportunityList" type="com:opportunityListType"/>
                 </xsd:sequence>
             </xsd:extension>
@@ -18,7 +17,7 @@
     <!-- Response format from opportunities 'create', 'read', 'update' -->
     <xsd:complexType name="opportunitiesUseResponse">
         <xsd:complexContent>        
-            <xsd:extension base="com:baseResponse">
+            <xsd:extension base="com:result">
                 <xsd:sequence>
                     <xsd:element name="opportunity">
                         <xsd:complexType>

@@ -6,7 +6,7 @@
     <!-- Response format from visitors 'query' -->    
     <xsd:complexType name="visitorsQueryResponse">
         <xsd:complexContent>
-            <xsd:extension base="com:baseResponse">
+            <xsd:extension base="com:rsp">
                 <xsd:sequence>
                     <xsd:element name="totalResults" type="xsd:int"/>
                     <xsd:element name="visitorList" type="com:visitorListType"/>
@@ -18,7 +18,7 @@
     <!-- Response format from prospects 'assign', 'read' -->
     <xsd:complexType name="visitorsUseResponse">
         <xsd:complexContent>        
-            <xsd:extension base="com:baseResponse">
+            <xsd:extension base="com:rsp">
                 <xsd:sequence>
                     <xsd:element name="visitor">
                         <xsd:complexType>
