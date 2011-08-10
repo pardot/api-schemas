@@ -7,7 +7,7 @@
       <xs:sequence>
         <xs:element ref="result"/>
       </xs:sequence>
-      <xs:attribute name="stat" use="required" type="xs:NCName"/>
+      <xs:attribute name="stat" use="required" type="xs:string"/>
       <xs:attribute name="version" use="required" type="xs:decimal"/>
     </xs:complexType>
   </xs:element>
@@ -39,13 +39,11 @@
   </xs:element>
   <xs:element name="value" type="xs:integer"/>
   <xs:element name="probability" type="xs:integer"/>
-  <xs:element name="type">
-    <xs:complexType/>
-  </xs:element>
+  <xs:element name="type" type="xs:string"/>
   <xs:element name="stage">
     <xs:complexType/>
   </xs:element>
-  <xs:element name="status" type="xs:NCName"/>
+  <xs:element name="status" type="xs:string"/>
   <xs:element name="created_at" type="xs:string"/>
   <xs:element name="updated_at" type="xs:string"/>
   <xs:element name="campaign">
@@ -74,10 +72,10 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="first_name" type="xs:NCName"/>
-  <xs:element name="last_name" type="xs:NCName"/>
+  <xs:element name="first_name" type="xs:string"/>
+  <xs:element name="last_name" type="xs:string"/>
   <xs:element name="email" type="xs:string"/>
-  <xs:element name="company" type="xs:NCName"/>
+  <xs:element name="company" type="xs:string"/>
   <xs:element name="id" type="xs:integer"/>
   <xs:element name="name" type="xs:string"/>
   

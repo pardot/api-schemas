@@ -1,64 +1,200 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:vis="visitors" xmlns:com="common" targetNamespace="visitors">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    
+    <!-- visitor query -->
+    <xs:element name="rsp2">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="result"/>
+            </xs:sequence>
+            <xs:attribute name="stat" use="required" type="xs:string"/>
+            <xs:attribute name="version" use="required" type="xs:decimal"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="result">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="total_results"/>
+                <xs:element ref="visitor"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="total_results" type="xs:integer"/>
+    <xs:element name="visitor2">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"/>
+                <xs:element ref="prospect_id"/>
+                <xs:element ref="page_view_count"/>
+                <xs:element ref="ip_address"/>
+                <xs:element ref="hostname"/>
+                <xs:element ref="browser"/>
+                <xs:element ref="browser_version"/>
+                <xs:element ref="operating_system"/>
+                <xs:element ref="operating_system_version"/>
+                <xs:element ref="language"/>
+                <xs:element ref="screen_height"/>
+                <xs:element ref="screen_width"/>
+                <xs:element ref="is_flash_enabled"/>
+                <xs:element ref="is_java_enabled"/>
+                <xs:element ref="campaign_parameter"/>
+                <xs:element ref="medium_parameter"/>
+                <xs:element ref="source_parameter"/>
+                <xs:element ref="content_parameter"/>
+                <xs:element ref="term_parameter"/>
+                <xs:element ref="created_at"/>
+                <xs:element ref="updated_at"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="id" type="xs:integer"/>
+    <xs:element name="prospect_id">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="page_view_count" type="xs:integer"/>
+    <xs:element name="ip_address" type="xs:NMTOKEN"/>
+    <xs:element name="hostname" type="xs:NMTOKEN"/>
+    <xs:element name="browser" type="xs:string"/>
+    <xs:element name="browser_version" type="xs:string"/>
+    <xs:element name="operating_system" type="xs:string"/>
+    <xs:element name="operating_system_version">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="language" type="xs:string"/>
+    <xs:element name="screen_height" type="xs:integer"/>
+    <xs:element name="screen_width" type="xs:integer"/>
+    <xs:element name="is_flash_enabled" type="xs:integer"/>
+    <xs:element name="is_java_enabled" type="xs:integer"/>
+    <xs:element name="campaign_parameter">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="medium_parameter">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="source_parameter">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="content_parameter">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="term_parameter">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="created_at" type="xs:string"/>
+    <xs:element name="updated_at" type="xs:string"/>
+    
+    <!-- visitor read -->
+    <xs:element name="rsp">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="visitor"/>
+            </xs:sequence>
+            <xs:attribute name="stat" use="required" type="xs:NCName"/>
+            <xs:attribute name="version" use="required" type="xs:decimal"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="visitor">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"/>
+                <xs:element ref="prospect"/>
+                <xs:element ref="page_view_count"/>
+                <xs:element ref="ip_address"/>
+                <xs:element ref="hostname"/>
+                <xs:element ref="browser"/>
+                <xs:element ref="browser_version"/>
+                <xs:element ref="operating_system"/>
+                <xs:element ref="operating_system_version"/>
+                <xs:element ref="language"/>
+                <xs:element ref="screen_height"/>
+                <xs:element ref="screen_width"/>
+                <xs:element ref="is_flash_enabled"/>
+                <xs:element ref="is_java_enabled"/>
+                <xs:element ref="campaign_parameter"/>
+                <xs:element ref="medium_parameter"/>
+                <xs:element ref="source_parameter"/>
+                <xs:element ref="content_parameter"/>
+                <xs:element ref="term_parameter"/>
+                <xs:element ref="created_at"/>
+                <xs:element ref="updated_at"/>
+                <xs:element ref="identified_company"/>
+                <xs:element ref="visitor_referrer"/>
+                <xs:element ref="visitor_activities"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="prospect">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="identified_company">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"/>
+                <xs:element ref="name"/>
+                <xs:element ref="street_address"/>
+                <xs:element ref="city"/>
+                <xs:element ref="state"/>
+                <xs:element ref="postal_code"/>
+                <xs:element ref="country"/>
+                <xs:element ref="email"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="street_address">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="city" type="xs:NCName"/>
+    <xs:element name="state" type="xs:NCName"/>
+    <xs:element name="postal_code" type="xs:NCName"/>
+    <xs:element name="country" type="xs:string"/>
+    <xs:element name="email" type="xs:string"/>
+    <xs:element name="visitor_referrer">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"/>
+                <xs:element ref="referrer"/>
+                <xs:element ref="vendor"/>
+                <xs:element ref="type"/>
+                <xs:element ref="query"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="referrer" type="xs:anyURI"/>
+    <xs:element name="vendor" type="xs:NCName"/>
+    <xs:element name="query" type="xs:string"/>
+    <xs:element name="visitor_activities">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="visitor_activity"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="visitor_activity">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"/>
+                <xs:element ref="type"/>
+                <xs:element ref="type_name"/>
+                <xs:element ref="details"/>
+                <xs:element ref="visit_id"/>
+                <xs:element ref="campaign"/>
+                <xs:element ref="created_at"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="type_name" type="xs:NCName"/>
+    <xs:element name="details" type="xs:string"/>
+    <xs:element name="visit_id" type="xs:integer"/>
+    <xs:element name="campaign">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"/>
+                <xs:element ref="name"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="name" type="xs:string"/>
+    <xs:element name="type" type="xs:string"/>
+    
+</xs:schema>
 
-    <xsd:import namespace="common" schemaLocation="common.xsd"/>
-
-    <!-- Response format from visitors 'query' -->    
-    <xsd:complexType name="visitorsQueryResponse">
-        <xsd:complexContent>
-            <xsd:extension base="com:rsp">
-                <xsd:sequence>
-                    <xsd:element name="totalResults" type="xsd:int"/>
-                    <xsd:element name="visitorList" type="com:visitorListType"/>
-                </xsd:sequence>
-            </xsd:extension>
-        </xsd:complexContent>
-    </xsd:complexType>       
-    
-    <!-- Response format from prospects 'assign', 'read' -->
-    <xsd:complexType name="visitorsUseResponse">
-        <xsd:complexContent>        
-            <xsd:extension base="com:rsp">
-                <xsd:sequence>
-                    <xsd:element name="visitor">
-                        <xsd:complexType>
-                            <xsd:complexContent>
-                                <xsd:extension base="com:visitorType">
-                                    <xsd:sequence>
-                                        <xsd:element name="prospect" type="com:prospectType"/>
-                                        <xsd:element name="identified_company" type="com:identifiedCompanyType"/>
-                                        <xsd:element name="visitor_referrer" type="com:visitorReferrerType"/>
-                                        <xsd:element name="visitor_activities">
-                                            <xsd:complexType>
-                                                <xsd:complexContent>
-                                                    <xsd:extension base="com:visitorActivityListType">
-                                                        <xsd:sequence>
-                                                            <xsd:element name="visitor_activity" type="com:visitorActivityType"/>
-                                                        </xsd:sequence>
-                                                    </xsd:extension>
-                                                </xsd:complexContent>
-                                            </xsd:complexType>
-                                        </xsd:element>
-                                    </xsd:sequence>
-                                </xsd:extension>
-                            </xsd:complexContent>
-                        </xsd:complexType>
-                    </xsd:element>
-                </xsd:sequence>            
-            </xsd:extension>
-        </xsd:complexContent>
-    </xsd:complexType>
-    
-    <xsd:complexType name="visitorAssignResponse">
-        <xsd:complexContent>
-            <xsd:extension base="vis:visitorsUseResponse"/>
-        </xsd:complexContent>
-    </xsd:complexType>
-        
-    <xsd:complexType name="visitorReadResponse">
-        <xsd:complexContent>
-            <xsd:extension base="vis:visitorsUseResponse"/>
-        </xsd:complexContent>
-    </xsd:complexType>    
-    
-</xsd:schema>

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
     
     <!-- prospect query -->
-    <xs:element name="rsp">
+    <xs:element name="rsp2">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="result"/>
+                <xs:element ref="result2"/>
             </xs:sequence>
-            <xs:attribute name="stat" use="required" type="xs:NCName"/>
+            <xs:attribute name="stat" use="required" type="xs:string"/>
             <xs:attribute name="version" use="required" type="xs:decimal"/>
         </xs:complexType>
     </xs:element>
-    <xs:element name="result">
+    <xs:element name="result2">
         <xs:complexType>
             <xs:sequence>
                 <xs:element ref="total_results"/>
@@ -20,7 +20,7 @@
         </xs:complexType>
     </xs:element>
     <xs:element name="total_results" type="xs:integer"/>
-    <xs:element name="prospect">
+    <xs:element name="prospect2">
         <xs:complexType>
             <xs:sequence>
                 <xs:element ref="id"/>
@@ -188,7 +188,7 @@
     <xs:element name="opted_out">
         <xs:complexType/>
     </xs:element>
-    <xs:element name="short_code" type="xs:NMTOKEN"/>
+    <xs:element name="short_code" type="xs:string"/>
     <xs:element name="is_reviewed" type="xs:string"/>
     <xs:element name="is_starred">
         <xs:complexType/>
@@ -201,7 +201,7 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:element name="name" type="xs:NCName"/>
+    <xs:element name="name" type="xs:string"/>
     <xs:element name="assigned_to">
         <xs:complexType>
             <xs:sequence>
@@ -223,7 +223,7 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:element name="role" type="xs:NCName"/>
+    <xs:element name="role" type="xs:string"/>
     <xs:element name="id" type="xs:integer"/>
     <xs:element name="first_name" type="xs:string"/>
     <xs:element name="last_name" type="xs:string"/>
@@ -235,7 +235,7 @@
     <xs:element name="updated_at" type="xs:string"/>
     
     <!-- prospect read -->
-    <xs:element name="rsp2">
+    <xs:element name="rsp">
         <xs:complexType>
             <xs:sequence>
                 <xs:element ref="prospect"/>
@@ -244,7 +244,7 @@
             <xs:attribute name="version" use="required" type="xs:decimal"/>
         </xs:complexType>
     </xs:element>
-    <xs:element name="prospect2">
+    <xs:element name="prospect">
         <xs:complexType>
             <xs:sequence>
                 <xs:element ref="id"/>
@@ -298,7 +298,6 @@
                 <xs:element ref="created_at"/>
                 <xs:element ref="updated_at"/>
                 <xs:element ref="campaign"/>
-                <xs:element ref="assigned_to"/>
                 <xs:element ref="profile"/>
                 <xs:element ref="visitors"/>
                 <xs:element ref="visitor_activities"/>
@@ -329,25 +328,8 @@
         <xs:complexType/>
     </xs:element>
     <xs:element name="visitor_activities">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element maxOccurs="unbounded" ref="visitor_activity"/>
-            </xs:sequence>
-        </xs:complexType>
+        <xs:complexType/>
     </xs:element>
-    <xs:element name="visitor_activity">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="id"/>
-                <xs:element ref="type"/>
-                <xs:element ref="type_name"/>
-                <xs:element minOccurs="0" ref="campaign"/>
-                <xs:element ref="created_at"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="type" type="xs:integer"/>
-    <xs:element name="type_name" type="xs:string"/>
     <xs:element name="lists">
         <xs:complexType/>
     </xs:element>
