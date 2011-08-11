@@ -1,46 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:usrs="users">
 
-    <!-- 'user' definition -->
     <xs:element name="user">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="id" type="xs:int"/>
-                <xs:element name="email" type="xs:string"/>
-                <xs:element name="first_name" type="xs:string"/>
-                <xs:element name="last_name" type="xs:string"/>
-                <xs:element name="job_title" type="xs:string"/>
-                <xs:element name="role" type="xs:string"/>
-                <xs:element name="created_at" type="xs:string"/>
-                <xs:element name="updated_at" type="xs:string"/>
+                <xs:element ref="id"/>
+                <xs:element ref="email"/>
+                <xs:element ref="first_name"/>
+                <xs:element ref="last_name"/>
+                <xs:element ref="job_title"/>
+                <xs:element ref="role"/>
+                <xs:element ref="created_at"/>
+                <xs:element ref="updated_at"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
-    <!-- Response format from users 'query' -->    
-    <xs:element name="rsp2">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="result">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="total_results" type="xs:int"/>
-                            <xs:element ref="user"/>
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
-            </xs:sequence>
-            <xs:attribute name="stat" use="required" type="xs:string"/>
-            <xs:attribute name="version" use="required" type="xs:decimal"/>
-        </xs:complexType>
-    </xs:element>
-    
-    <!-- Response format from users 'read' -->
+    <!-- user responses -->
     <xs:element name="rsp">
         <xs:complexType>
-            <xs:sequence>
+            <xs:choice>
+                <!-- user'query' -->
+                <xs:element ref="result"/>
+                <!-- user 'read' -->
                 <xs:element ref="user"/>
-            </xs:sequence>
+            </xs:choice>
             <xs:attribute name="stat" use="required" type="xs:string"/>
             <xs:attribute name="version" use="required" type="xs:decimal"/>
         </xs:complexType>

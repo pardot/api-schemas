@@ -2,6 +2,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
   <!-- common types -->
+  <xs:element name="total_results" type="xs:integer"/>
   <xs:element name="first_name" type="xs:string"/>
   <xs:element name="last_name" type="xs:string"/>
   <xs:element name="email" type="xs:string"/>
@@ -10,6 +11,15 @@
   <xs:element name="name" type="xs:string"/>
   <xs:element name="prospect_id" type="xs:integer"/>
   <xs:element name="type_name" type="xs:string"/>
+  <xs:element name="value" type="xs:integer"/>
+  <xs:element name="probability" type="xs:integer"/>
+  <xs:element name="type" type="xs:string"/>
+  <xs:element name="stage">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="status" type="xs:string"/>
+  <xs:element name="created_at" type="xs:string"/>
+  <xs:element name="updated_at" type="xs:string"/>
   
   <xs:element name="result">
     <xs:complexType>
@@ -34,6 +44,7 @@
         <xs:element ref="updated_at"/>
         <xs:element ref="campaign"/>
         <xs:element ref="prospects"/>
+        <!-- only returned when calling 'create', 'read', 'update', not 'query' -->
         <xs:element ref="opportunity_activities" minOccurs="0"/>
       </xs:sequence>
     </xs:complexType>
@@ -63,35 +74,15 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-
-  <!-- opp response -->
-  <xs:element name="rsp">
-    <xs:complexType>
-      <xs:choice>
-        <xs:element ref="result"/>
-        <xs:element ref="opportunity"/>
-      </xs:choice>
-      <xs:attribute name="stat" use="required" type="xs:string"/>
-      <xs:attribute name="version" use="required" type="xs:decimal"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="total_results" type="xs:integer"/>
-  <xs:element name="opportunity_activities">
+  
+  <xs:element name="prospects">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="visitor_activity"/>
+        <xs:element ref="prospect"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="value" type="xs:integer"/>
-  <xs:element name="probability" type="xs:integer"/>
-  <xs:element name="type" type="xs:string"/>
-  <xs:element name="stage">
-    <xs:complexType/>
-  </xs:element>
-  <xs:element name="status" type="xs:string"/>
-  <xs:element name="created_at" type="xs:string"/>
-  <xs:element name="updated_at" type="xs:string"/>
+  
   <xs:element name="campaign">
     <xs:complexType>
       <xs:sequence>
@@ -100,11 +91,26 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="prospects">
+  
+  <xs:element name="opportunity_activities">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="prospect"/>
+        <xs:element ref="visitor_activity"/>
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- opportunity response -->
+  <xs:element name="rsp">
+    <xs:complexType>
+      <xs:choice>
+        <!-- opportunity 'query' -->
+        <xs:element ref="result"/>
+        <!-- opportunity 'create', 'read', or 'update' -->
+        <xs:element ref="opportunity"/>
+      </xs:choice>
+      <xs:attribute name="stat" use="required" type="xs:string"/>
+      <xs:attribute name="version" use="required" type="xs:decimal"/>
     </xs:complexType>
   </xs:element>
   
