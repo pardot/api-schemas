@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:com="http://developer.pardot.com/common" xmlns:opp="http://developer.pardot.com/opp" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
   
-  <xs:import namespace="http://developer.pardot.com/common" schemaLocation="common.xsd"/>
-
   <!-- common types -->
-  <xs:complexType name="result">
-    <xs:sequence>
-      <xs:element name="total_results" type="xs:int"/>
-      <xs:element name="opportunity" maxOccurs="unbounded" type="opportunity"/>
-    </xs:sequence>
-  </xs:complexType>
-
   <xs:complexType name="stage"/>
-
+  
   <xs:complexType name="opportunity">
     <xs:sequence>
       <xs:element name="id" type="xs:int"/>
@@ -25,14 +16,30 @@
       <xs:element name="created_at" type="xs:string"/>
       <xs:element name="updated_at" type="xs:string"/>
       <xs:element name="campaign" type="campaign"/>
-      <xs:element name="prospects" type="prospects"/>
+      <xs:element name="prospects" type="prospects" minOccurs="0"/>
       <xs:element name="opportunity_activities" minOccurs="0" type="opportunity_activities"/>
     </xs:sequence>
   </xs:complexType>   
   
   <xs:complexType name="prospects">
     <xs:sequence>
-      <xs:element name="prospect" type="prospect"/>
+      <xs:element name="prospect" type="prospect" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="profile">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string"/>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="profile_criteria" type="profile_criteria" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="profile_criteria">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string" minOccurs="1"/>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="matches" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
   
@@ -40,6 +47,37 @@
     <xs:sequence>
       <xs:element name="id" type="xs:int"/>
       <xs:element name="name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="visitors">
+    <xs:sequence>
+      <xs:element name="visitor" type="visitor"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="visitor">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string"/>
+      <xs:element name="browser" type="xs:string"/>
+      <xs:element name="browser_version" type="xs:string"/>
+      <xs:element name="operating_system" type="xs:string"/>
+      <xs:element name="operating_system_version" type="xs:string"/>
+      <xs:element name="language" type="xs:string"/>
+      <xs:element name="screen_height" type="xs:int"/>
+      <xs:element name="screen_width" type="xs:int"/>
+      <xs:element name="page_view_count" type="xs:int"/>
+      <xs:element name="is_flash_enabled" type="xs:boolean"/>
+      <xs:element name="is_java_enabled" type="xs:boolean"/>
+      <xs:element name="ip_address" type="xs:string"/>
+      <xs:element name="hostname" type="xs:string"/>
+      <xs:element name="campaign_parameter" type="xs:string"/>
+      <xs:element name="medium_parameter" type="xs:string"/>
+      <xs:element name="source_parameter" type="xs:string"/>
+      <xs:element name="content_paramter" type="xs:string"/>
+      <xs:element name="term_parameter" type="xs:string"/>
+      <xs:element name="created_at" type="xs:string"/>
+      <xs:element name="updated_at" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
   
@@ -54,14 +92,69 @@
     </xs:sequence>
   </xs:complexType>
   
+  <xs:complexType name="visitor_activities">
+    <xs:sequence>
+      <xs:element name="visitor_activity" type="visitor_activity"/>
+    </xs:sequence>
+  </xs:complexType>
+  
   <xs:complexType name="prospect">
     <xs:sequence>
       <xs:element name="id" type="xs:int"/>
-      <xs:element name="first_name" type="xs:string"/>
-      <xs:element name="last_name" type="xs:string"/>
+      <xs:element name="campaign_id" type="xs:int" minOccurs="0"/>
+      <xs:element name="salutation" type="xs:string" minOccurs="0"/>
+      <xs:element name="first_name" type="xs:string" minOccurs="0"/>
+      <xs:element name="last_name" type="xs:string" minOccurs="0"/>
       <xs:element name="email" type="xs:string"/>
-      <xs:element name="company" type="xs:string"/>
-    </xs:sequence>
+      <xs:element name="password" type="xs:string" minOccurs="0"/>
+      <xs:element name="company" type="xs:string" minOccurs="0"/>
+      <xs:element name="website" type="xs:string" minOccurs="0"/>
+      <xs:element name="job_title" type="xs:string" minOccurs="0"/>
+      <xs:element name="department" type="xs:string" minOccurs="0"/>
+      <xs:element name="country" type="xs:string" minOccurs="0"/>
+      <xs:element name="address_one" type="xs:string" minOccurs="0"/>
+      <xs:element name="address_two" type="xs:string" minOccurs="0"/>
+      <xs:element name="city" type="xs:string" minOccurs="0"/>
+      <xs:element name="state" type="xs:string" minOccurs="0"/>
+      <xs:element name="territory" type="xs:string" minOccurs="0"/>
+      <xs:element name="zip" type="xs:string" minOccurs="0"/>
+      <xs:element name="phone" type="xs:string" minOccurs="0"/>
+      <xs:element name="fax" type="xs:string" minOccurs="0"/>
+      <xs:element name="source" type="xs:string" minOccurs="0"/>
+      <xs:element name="annual_revenue" type="xs:string" minOccurs="0"/>
+      <xs:element name="employees" type="xs:string" minOccurs="0"/>
+      <xs:element name="industry" type="xs:string" minOccurs="0"/>
+      <xs:element name="years_in_business" type="xs:string" minOccurs="0"/>
+      <xs:element name="comments" type="xs:string" minOccurs="0"/>
+      <xs:element name="notes" type="xs:string" minOccurs="0"/>
+      <xs:element name="score" type="xs:int" minOccurs="0"/>
+      <xs:element name="grade" type="xs:string" minOccurs="0"/>
+      <xs:element name="last_activity_at" type="xs:string" minOccurs="0"/>
+      <xs:element name="recent_interaction" type="xs:string" minOccurs="0"/>
+      <xs:element name="crm_lead_fid" type="xs:string" minOccurs="0"/>
+      <xs:element name="crm_contact_fid" type="xs:string" minOccurs="0"/>
+      <xs:element name="crm_owner_fid" type="xs:string" minOccurs="0"/>
+      <xs:element name="crm_account_fid" type="xs:string" minOccurs="0"/>
+      <xs:element name="crm_opportunity_fid" type="xs:string" minOccurs="0"/>
+      <xs:element name="crm_opportunity_created_at" type="xs:string" minOccurs="0"/>
+      <xs:element name="crm_opportunity_updated_at" type="xs:string" minOccurs="0"/>
+      <xs:element name="crm_opportunity_value" type="xs:string" minOccurs="0"/>
+      <xs:element name="crm_opportunity_status" type="xs:string" minOccurs="0"/>
+      <xs:element name="crm_last_sync" type="xs:string" minOccurs="0"/>
+      <xs:element name="crm_is_sale_won" type="xs:string" minOccurs="0"/>
+      <xs:element name="is_do_not_email" type="xs:string" minOccurs="0"/>
+      <xs:element name="is_do_not_call" type="xs:string" minOccurs="0"/>
+      <xs:element name="opted_out" type="xs:string" minOccurs="0"/>
+      <xs:element name="short_code" type="xs:string" minOccurs="0"/>
+      <xs:element name="is_reviewed" type="xs:string" minOccurs="0"/>
+      <xs:element name="is_starred" type="xs:string" minOccurs="0"/>
+      <xs:element name="created_at" type="xs:string" minOccurs="0"/>
+      <xs:element name="updated_at" type="xs:string" minOccurs="0"/>
+      <xs:element name="campaign" type="campaign" minOccurs="0"/>
+      <!--<xs:element name="profile" type="profile" minOccurs="0"/>-->
+      <!--<xs:element name="visitors" type="visitor" minOccurs="0"/>-->
+      <!--<xs:element name="visitor_activities" type="visitor_activities" minOccurs="0"/>-->
+    </xs:sequence>            
   </xs:complexType>
   
   <xs:complexType name="opportunity_activities">
@@ -69,8 +162,28 @@
       <xs:element name="visitor_activity" type="visitor_activity"/>
     </xs:sequence>
   </xs:complexType>
+  
+  <xs:complexType name="user">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element name="email" type="xs:string"/>
+      <xs:element name="first_name" type="xs:string"/>
+      <xs:element name="last_name" type="xs:string"/>
+      <xs:element name="job_title" type="xs:string"/>
+      <xs:element name="role" type="xs:string"/>
+      <xs:element name="created_at" type="xs:string"/>
+      <xs:element name="updated_at" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
 
   <!-- opportunity response -->
+  <xs:complexType name="result">
+    <xs:sequence>
+      <xs:element name="total_results" type="xs:int"/>
+      <xs:element name="opportunity" maxOccurs="unbounded" type="opportunity"/>
+    </xs:sequence>
+  </xs:complexType>
+  
   <xs:element name="rsp">
     <xs:complexType>
       <xs:choice>
