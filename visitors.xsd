@@ -57,8 +57,9 @@
     </xs:complexType>
     
     <xs:complexType name="visitor">
-        <xs:sequence>
+        <xs:all>
             <xs:element name="id" type="xs:string"/>
+            <xs:element name="prospect_id" type="xs:string" minOccurs="0"/>
             <xs:element name="browser" type="xs:string" minOccurs="0"/>
             <xs:element name="browser_version" type="xs:string" minOccurs="0"/>
             <xs:element name="operating_system" type="xs:string" minOccurs="0"/>
@@ -74,11 +75,12 @@
             <xs:element name="campaign_parameter" type="xs:string" minOccurs="0"/>
             <xs:element name="medium_parameter" type="xs:string" minOccurs="0"/>
             <xs:element name="source_parameter" type="xs:string" minOccurs="0"/>
-            <xs:element name="content_paramter" type="xs:string" minOccurs="0"/>
+            <xs:element name="content_parameter" type="xs:string" minOccurs="0"/>
             <xs:element name="term_parameter" type="xs:string" minOccurs="0"/>
             <xs:element name="created_at" type="xs:string" minOccurs="0"/>
             <xs:element name="updated_at" type="xs:string" minOccurs="0"/>
-        </xs:sequence>
+            <xs:element name="prospect" type="prospect" minOccurs="0"/>              
+        </xs:all>
     </xs:complexType>
     
     <xs:complexType name="visitor_activity">
@@ -100,7 +102,7 @@
     
     <xs:complexType name="prospect">
         <xs:sequence>
-            <xs:element name="id" type="xs:int"/>
+            <xs:element name="id" type="xs:int" minOccurs="0"/>
             <xs:element name="campaign_id" type="xs:int" minOccurs="0"/>
             <xs:element name="salutation" type="xs:string" minOccurs="0"/>
             <xs:element name="first_name" type="xs:string" minOccurs="0"/>

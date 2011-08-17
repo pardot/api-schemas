@@ -1,7 +1,7 @@
 Pardot API
 ==========
 
-Thanks for checking out the Pardot API! **PLEASE NOTE!** These files are under active development. If you wish to use them, please check out via git and update regularly, or check back for updates. If you have any issues, please contact support@pardot.com. 
+Thanks for checking out the Pardot API! **PLEASE NOTE!** These files are under active development, and some are incomplete at this time. If you wish to use them, please check out via git and update regularly, or check back for updates. If you have any issues, please contact support@pardot.com. 
 
 ### XSDs
 Describe the responses given by the Pardot API. For more information about XSDs, check out the [Wikipedia article](http://goo.gl/ECFav)
